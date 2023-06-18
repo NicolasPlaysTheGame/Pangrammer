@@ -144,22 +144,6 @@
                     $('#arrow-edit span').html('«');
                 }
             });
-
-            // Reference messages collection
-            var messagesRef = firebase.database().ref('contactformmessages');
-            
-            $('#pangramform').submit(function(e) {
-                e.preventDefault();
-                
-                var newMessageRef = messagesRef.push();
-                newMessageRef.set({
-                    message: $('#pangram').val()
-                });
-                
-                $('.success-message').show();
-                
-                $('#pangramform')[0].reset();
-            });
         });
     </script>
 
