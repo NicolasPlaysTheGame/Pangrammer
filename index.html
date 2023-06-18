@@ -592,7 +592,7 @@
                 setTimeout(function () {
                     document.querySelector('.alert').style.display = 'none';
                 }, 7000);
-                document.getElementById('pangram').reset();
+                document.getElementsByClassName('trumbowyg-editor').reset();
             }).catch((error) => {
                 alert(error)
             })
