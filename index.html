@@ -144,6 +144,22 @@
                     $('#arrow-edit span').html('«');
                 }
             });
+
+            // Reference messages collection
+            var messagesRef = firebase.database().ref('contactformmessages');
+            
+            $('#pangramform').submit(function(e) {
+                e.preventDefault();
+                
+                var newMessageRef = messagesRef.push();
+                newMessageRef.set({
+                    message: $('#pangram').val()
+                });
+                
+                $('.success-message').show();
+                
+                $('#pangramform')[0].reset();
+            });
         });
     </script>
 
@@ -219,7 +235,7 @@
 
         <div class="alert alert-success success-message" style="display:none;">Form submitted successfully.</div>
 
-        <form enctype="text/plain" class="clearfix" id="pangramform">
+        <form class="clearfix" id="pangramform">
 
             <div id="submit-line">
                 <label>
@@ -548,27 +564,6 @@
 
         // Initialize Realtime Database and get a reference to the service
         const database = getDatabase(app);
-    </script>
-
-    <script>
-        // Reference messages collection
-        var messagesRef = firebase.database().ref('contactformmessages');
-
-        $('#pangramform').submit(function(e) {
-            e.preventDefault();
-            
-            var newMessageRef = messagesRef.push();
-            newMessageRef.set({
-                name: $('#pangram').val(),
-                email: $('.email').val(),
-                subject: $('.subject').val(),
-                message: $('.message').val()
-            });
-            
-            $('.success-message').show();
-            
-            $('#pangramform')[0].reset();
-        });
     </script>
 
 </body>
