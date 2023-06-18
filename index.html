@@ -217,6 +217,8 @@
             </div>
         </div>
 
+        <div class="alert alert-success success-message" style="display:none;">Form submitted successfully.</div>
+
         <form action="pangram.php" method="post" enctype="text/plain" class="clearfix" id="pangramform">
 
             <div id="submit-line">
@@ -546,6 +548,25 @@
 
         // Initialize Realtime Database and get a reference to the service
         const database = getDatabase(app);
+
+        // Reference messages collection
+        var messagesRef = firebase.database().ref('contactformmessages');
+
+        $('#pangramform').submit(function(e) {
+            e.preventDefault();
+            
+            var newMessageRef = messagesRef.push();
+            newMessageRef.set({
+                name: $('.fullname').val(),
+                email: $('.email').val(),
+                subject: $('.subject').val(),
+                message: $('.message').val()
+            });
+            
+            $('.success-message').show();
+            
+            $('#pangramform')[0].reset();
+        });
     </script>
 
 </body>
