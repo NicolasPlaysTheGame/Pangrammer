@@ -233,13 +233,13 @@
             </div>
         </div>
 
-        <div class="alert alert-success success-message" style="display:none;">Form submitted successfully.</div>
+        <form action="" method="POST" class="clearfix" id="pangramform">
 
-        <form class="clearfix" id="pangramform">
+            <div class="alert" style="display:none;">Form submitted successfully.</div>
 
             <div id="submit-line">
                 <label>
-                    <input type="submit" name="submit" value="Publier" id="submit" disabled>
+                    <input sendMessage() type="submit" name="submit" value="Publier" id="submit" disabled>
                     <div id="scissors" class="disabled">
 
                         <svg viewBox="-2.115 -1.413 105.805 63.39" xmlns="http://www.w3.org/2000/svg"
@@ -541,14 +541,8 @@
     </script>
 
     <script type="module">
-        // Import the functions you need from the SDKs you need
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-        import { getDatabase } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-database.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
         
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-        
-        // Your web app's Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyAb39MGDDUaMP-pprqsC4F-W9stxUVvq0E",
             authDomain: "pangrammer-ece3e.firebaseapp.com",
@@ -561,9 +555,48 @@
         
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
-
-        // Initialize Realtime Database and get a reference to the service
-        const database = getDatabase(app);
+        
+        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+        
+        //listen for submit event//(1)
+        document
+            .getElementById('pangramform')
+            .addEventListener('submit', formSubmit);
+        
+        //Submit form(2)
+        function formSubmit(e) {
+            e.preventDefault();
+            // Get Values from the DOM
+            let pangram = document.querySelector('#pangram').value;
+            let name = document.querySelector('#name').value;
+            let month = document.querySelector('#monthPicker').value;
+            let date = document.querySelector('#datePicker').value;
+            
+            //send message values(3)
+            sendMessage(pangram, name, month, date);
+        }
+        
+        //Send Message to Firebase(4)
+        function sendMessage(pangram, name, month, date) {
+            const database = getDatabase();
+            
+            set(ref(database, 'users/' + Math.floor(Math.random() * 10000000)), {
+                pangram: pangram,
+                name: name,
+                month: month,
+                date: date
+            }).then(() => {
+                //Show Alert Message(5)
+                document.querySelector('.alert').style.display = 'block';
+                //Hide Alert Message After Seven Seconds(6)
+                setTimeout(function () {
+                    document.querySelector('.alert').style.display = 'none';
+                }, 7000);
+                document.getElementById('pangram').reset();
+            }).catch((error) => {
+                alert(error)
+            })
+        }
     </script>
 
 </body>
