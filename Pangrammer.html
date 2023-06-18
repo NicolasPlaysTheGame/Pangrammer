@@ -1,0 +1,527 @@
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pangrammer</title>
+    <link rel="stylesheet" href="Pangrammer.css">
+    <script src='https://code.jquery.com/jquery-2.0.3.js'></script>
+    <link rel="stylesheet" href="https://rawcdn.githack.com/Alex-D/Trumbowyg/v2.25.0/dist/ui/trumbowyg.min.css">
+    <link rel="stylesheet" href="https://rawcdn.githack.com/Alex-D/Trumbowyg/v2.25.0/dist/plugins/colors/ui/trumbowyg.colors.min.css">
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            function update_pangram() {
+
+                var text = $('.trumbowyg-editor').text();
+                var pangram = text.toLowerCase();
+                pangram = pangram.replace(new RegExp(" ", 'g'), "-");
+                pangram = pangram.replace(new RegExp("[àáâãäå]", 'g'), "a");
+                pangram = pangram.replace(new RegExp("æ", 'g'), "ae");
+                pangram = pangram.replace(new RegExp("ç", 'g'), "c");
+                pangram = pangram.replace(new RegExp("[èéêë]", 'g'), "e");
+                pangram = pangram.replace(new RegExp("[ìíîï]", 'g'), "i");
+                pangram = pangram.replace(new RegExp("ñ", 'g'), "n");
+                pangram = pangram.replace(new RegExp("[òóôõö]", 'g'), "o");
+                pangram = pangram.replace(new RegExp("œ", 'g'), "oe");
+                pangram = pangram.replace(new RegExp("[ùúûü]", 'g'), "u");
+                pangram = pangram.replace(new RegExp("[ýÿ]", 'g'), "y");
+                pangram = pangram.replace(new RegExp("[^a-zA-Z-]", 'g'), "-");
+                pangram = pangram.replace(new RegExp("-+", 'g'), "");
+                pangram = pangram.replace(new RegExp("^-"), "");
+                pangram = pangram.replace(new RegExp("-$"), "");
+
+                $('#pangramlength').text(pangram.length);
+
+                var a = 97;
+                var alphabet = {};
+                var success = 0;
+                for (var i = 0; i < 26; i++) {
+                    l = String.fromCharCode(a + i);
+                    alphabet[l] = pangram.split(l).length - 1;
+                    $('#' + l + 'n').text(alphabet[l]);
+                    if (alphabet[l] == 0) {
+                        $('#' + l).removeClass("success");
+                    }
+                    else {
+                        success++;
+                        if (alphabet[l] == 1) {
+                            $('#' + l).addClass("success");
+                        }
+                    }
+                }
+
+                if (success == 26) {
+                    $('#pangramlength2').text(pangram.length);
+                    $('#letters').addClass("hide");
+                    $('#lastLetters').addClass("hide");
+                    $('#submit').attr("disabled", false);
+                    $('#scissors').removeClass("disabled");
+                    $('#scissors').addClass("enabled");
+                    $('#scissors').attr('title', 'Publier');
+                    $('#svg_2').attr("fill", "white");
+                    $('#written_by').text("composé");
+                    $('#text_of').text("Pangramme");
+                    $('.name-date').css('display', 'inline-block');
+                }
+                else {
+                    $('#letters').removeClass("hide");
+                    $('#lastLetters').removeClass("hide");
+                    $('#submit').attr("disabled", true);
+                    $('#scissors').removeClass("enabled");
+                    $('#scissors').addClass("disabled");
+                    $('#scissors').attr('title', '');
+                    $('#svg_2').attr("fill", "rgba(16, 16, 16, 0.3)");
+                    $('#written_by').text("écrit");
+                    $('#text_of').text("Texte");
+                    $('.name-date').css('display', 'none');
+                }
+            }
+
+            $('#reset').click(function () {
+                $('#pangramlength').text("0");
+                $('#letters').removeClass("hide");
+                $('#submit').attr("disabled", true);
+                $('#letters div').each(function () {
+                    $(this).removeClass("success");
+                });
+                $('#scissors').removeClass("enabled");
+                $('#scissors').addClass("disabled");
+                $('#scissors').attr('title', '');
+                $('#written_by').text("écrit");
+                $('#text_of').text("Texte");
+            });
+
+            $('#eye').click(function () {
+                var hide = $('#msg').css('display');
+                if (hide == 'none') {
+                    $('#eye g:nth-child(1)').css('visibility', 'hidden');
+                    $('#eye g:nth-child(2)').css('visibility', 'visible');
+                    $('#eye').hover(function () {
+                        $('#eye g:nth-child(1)').css('visibility', 'hidden');
+                        $('#eye g:nth-child(2)').css('visibility', 'visible');
+                    });
+                    $('#msg').show();
+                    setTimeout(function () {
+                        $('#msg').css('height', 'auto');
+                    }, 10);
+                } else {
+                    $('#eye g:nth-child(2)').css('visibility', 'hidden');
+                    $('#eye g:nth-child(1)').css('visibility', 'visible');
+                    $('#eye').hover(function () {
+                        $('#eye g:nth-child(1)').css('visibility', 'hidden');
+                        $('#eye g:nth-child(2)').css('visibility', 'visible');
+                    }, function () {
+                        $('#eye g:nth-child(2)').css('visibility', 'hidden');
+                        $('#eye g:nth-child(1)').css('visibility', 'visible');
+                    });
+                    $('#msg').css('height', '0');
+                    setTimeout(function () {
+                        $('#msg').hide();
+                    }, 1000);
+                }
+            });
+
+            $('.trumbowyg-editor').bind('DOMSubtreeModified', update_pangram);
+            update_pangram();
+
+            $('.trumbowyg-editor').before('<div id="arrow-edit"><span>«</span></div>');
+
+            $('.trumbowyg-editor').focus(function(){
+                $('#arrow-edit').fadeTo(500, 1);
+                $('#letters').fadeTo(500, 1);
+                $('#lastLetters').fadeTo(500, 1);
+            });
+
+            $('#arrow-edit span').click(function(){
+                var hide = $('.trumbowyg-button-pane').css('display');
+                if (hide == 'none') {
+                    $('.trumbowyg-button-pane').css('display', 'block');
+                    $('#arrow-edit span').html('»');
+                } else {
+                    $('.trumbowyg-button-pane').css('display', 'none');
+                    $('#arrow-edit span').html('«');
+                }
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <header>
+        <div id="head">
+            <div id="title">Pangrammer</div>
+            <div id="title-overlay">Pangrammer</div>
+        </div>
+        <div id="head-description"><span>*</span><p>Panser</p><span>*</span><p>Grapher</p><span>*</span><p>Mémoriser</p><span>*</span></div>
+    </header>
+
+    <main>
+
+        <div id="topSheet">
+            <div id="sheetfold-top"></div>
+            <div id="pangramform-top">
+
+                <div id="pangram-history">
+                    <svg id="eye" viewBox="0 3 20 14" xmlns="http://www.w3.org/2000/svg">
+                        <g>
+                            <path d="M 10 3 C 3 3 0 10 0 10 C 0 10 3 17 10 17 C 17 17 20 10 20 10 C 20 10 17 3 10 3 Z"
+                                style="fill: rgba(255, 165, 0, 1)" />
+                            <path
+                                d="M 10 14.5 C 6.536 14.5 4.371 10.75 6.103 7.75 C 7.835 4.75 12.165 4.75 13.897 7.75 C 14.292 8.434 14.5 9.21 14.5 10 C 14.5 12.485 12.485 14.5 10 14.5 Z"
+                                style="fill: rgb(255, 255, 255);" />
+                            <path
+                                d="M 10 7.5 C 8.075 7.5 6.873 9.583 7.835 11.25 C 8.797 12.917 11.203 12.917 12.165 11.25 C 12.384 10.87 12.5 10.439 12.5 10 C 12.5 8.619 11.381 7.5 10 7.5 Z" />
+                        </g>
+                        <g transform="matrix(1, 0, 0, 1, -0.000001, -0.000001)">
+                            <path
+                                d="M 10 4.701 C 3 4.701 0 10 0 10 C 0 10 3 17 10 17 C 17 17 20 10 20 10 C 20 10 17 4.701 10 4.701 Z"
+                                style="fill: rgb(255, 165, 0);" />
+                            <path
+                                d="M 10 17 C 6.536 17 4.371 13.25 6.103 10.25 C 7.835 7.25 12.165 7.25 13.897 10.25 C 14.292 10.934 14.5 11.71 14.5 12.5 C 14.5 14.985 12.485 17 10 17 Z"
+                                style="fill: rgb(255, 255, 255);" />
+                            <path
+                                d="M 10 10 C 8.075 10 6.873 12.083 7.835 13.75 C 8.797 15.417 11.203 15.417 12.165 13.75 C 12.384 13.37 12.5 12.939 12.5 12.5 C 12.5 11.119 11.381 10 10 10 Z" />
+                        </g>
+                    </svg>
+
+                    <div id="msg">
+
+                        <div id="msg_3">
+                            <div class="message">
+                                Le vif zéphyr jubile sur les kumquats du clown gracieux
+                            </div>
+                            <p class="author-message">par <span>Anonyme</span>, le <span>27 juin 2022</span></p>
+                        </div>
+
+                        <div id="msg_2">
+                            <div class="message">
+                                Voix ambiguë d'un cœur qui, au zéphyr, préfère les jattes de kiwis
+                            </div>
+                            <p class="author-message">par <span>Anonyme</span>, le <span>26 juin 2022</span></p>
+                        </div>
+
+                        <div id="msg_1">
+                            <div class="message">
+                                Portez ce vieux whisky au juge blond qui fume
+                            </div>
+                            <p class="author-message">par <span>Anonyme</span>, le <span>25 juin 2022</span></p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <form action="Pangrammer.php" method="post" enctype="text/plain" class="clearfix" id="pangramform">
+
+            <div id="submit-line">
+                <label>
+                    <input type="submit" name="submit" value="Publier" id="submit" disabled>
+                    <div id="scissors" class="disabled">
+
+                        <svg viewBox="-2.115 -1.413 105.805 63.39" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:bx="https://boxy-svg.com">
+                            <g transform="matrix(-1, 0, 0, 1, 101.552103, 0)" bx:origin="0.445183 0.495571">
+                                <path
+                                    d="M 57.005 33.649 L 100.334 29.675 L 100.334 29.676 C 97.629 23.496 90.115 21.532 83.924 22.079 L 40.919 26.431 C 30.556 33.958 23.421 31.935 17.081 29.716 C 11.818 27.873 4.95 27.565 0.89 32.093 C -3.022 36.427 -2.66 44.296 2.561 47.463 C 7.675 51.199 16.284 50.798 19.527 44.616 C 22.027 39.85 19.123 36.442 21.027 34.997 C 22.463 33.908 28.831 36.603 42.1 34.693 M 49.553 34.171 Z M 15.018 33.449 C 20.169 37.228 16.397 46.695 10.163 46.325 C 5.891 46.56 0.893 43.027 1.812 38.337 C 2.65 32.554 10.632 29.401 15.018 33.449 Z"
+                                    id="Scissors1" bx:origin="0.457912 0.287356" />
+                                <path
+                                    d="M 57.176 26.99 L 100.505 30.964 L 100.505 30.963 C 97.8 37.143 90.286 39.107 84.095 38.56 L 41.09 34.208 C 30.727 26.681 23.592 28.704 17.252 30.923 C 11.989 32.766 5.121 33.074 1.061 28.546 C -2.851 24.212 -2.489 16.342 2.732 13.175 C 7.846 9.439 16.455 9.84 19.698 16.022 C 22.198 20.788 19.294 24.197 21.198 25.642 C 22.634 26.731 29.002 24.036 42.271 25.946 M 49.724 26.468 Z M 15.189 27.19 C 20.34 23.41 16.568 13.943 10.334 14.313 C 6.062 14.078 1.064 17.611 1.983 22.301 C 2.821 28.085 10.803 31.238 15.189 27.19 Z"
+                                    id="Scissors2" bx:origin="0.459659 0.689729" />
+                            </g>
+                        </svg>
+
+                    </div>
+                </label>
+            </div>
+
+            <textarea oninput="auto_grow(this)" placeholder="Composez ici vos propres pangrammes en une phrase cohérente et la plus courte possible, sans lettres solitaires, ni abréviation ou sigle." id="pangram" name="pangram" autofocus></textarea>
+
+            <div class="name-date">
+                <div id="pangram-counter"><span id="text_of"></span> de <span id="pangramlength">0</span> lettres</div>
+                <div id="pangramauthor">
+                    <label for="name"><span id="written_by"></span> par</label>
+                    <input type="text" id="name" name="name" placeholder="____" size="20" required>
+                    <span>,</span>
+                </div>
+            </div>
+
+            <div class="name-date">
+                <div id="pangram-month">
+                    <label for="month"></label>
+                    <input type="month" id="monthPicker" name="month" disabled>
+                </div>
+                <div id="pangram-date">
+                    <label for="date">le</label>
+                    <input type="date" id="datePicker" name="date" disabled>
+                </div>
+            </div>
+
+            <div id="lastLetters"><p>Lettres restantes à utiliser :</p></div>
+
+            <div id="letters">
+                <div id="a">a<div id="an">0</div>
+                </div>
+                <div id="b">b<div id="bn">0</div>
+                </div>
+                <div id="c">c<div id="cn">0</div>
+                </div>
+                <div id="d">d<div id="dn">0</div>
+                </div>
+                <div id="e">e<div id="en">0</div>
+                </div>
+                <div id="f">f<div id="fn">0</div>
+                </div>
+                <div id="g">g<div id="gn">0</div>
+                </div>
+                <div id="h">h<div id="hn">0</div>
+                </div>
+                <div id="i">i<div id="in">0</div>
+                </div>
+                <div id="j">j<div id="jn">0</div>
+                </div>
+                <div id="k">k<div id="kn">0</div>
+                </div>
+                <div id="l">l<div id="ln">0</div>
+                </div>
+                <div id="m">m<div id="mn">0</div>
+                </div>
+                <div id="n">n<div id="nn">0</div>
+                </div>
+                <div id="o">o<div id="on">0</div>
+                </div>
+                <div id="p">p<div id="pn">0</div>
+                </div>
+                <div id="q">q<div id="qn">0</div>
+                </div>
+                <div id="r">r<div id="rn">0</div>
+                </div>
+                <div id="s">s<div id="sn">0</div>
+                </div>
+                <div id="t">t<div id="tn">0</div>
+                </div>
+                <div id="u">u<div id="un">0</div>
+                </div>
+                <div id="v">v<div id="vn">0</div>
+                </div>
+                <div id="w">w<div id="wn">0</div>
+                </div>
+                <div id="x">x<div id="xn">0</div>
+                </div>
+                <div id="y">y<div id="yn">0</div>
+                </div>
+                <div id="z">z<div id="zn">0</div>
+                </div>
+            </div>
+
+        </form>
+        </div>
+
+        <div id="bottomSheet">
+            <div id="sheetfold-bottom"></div>
+            <div id="pangramform-bottom"></div>
+        </div>
+        </div>
+
+    </main>
+
+    <footer>
+    </footer>
+
+    <script type="text/javascript">
+        function auto_grow(element) {
+            element.style.height = "5px";
+            element.style.height = (element.scrollHeight) + "px";
+        }
+
+        (function () {
+
+            var min = 25, max = 300, pad_right = 4, input = document.getElementById('name');
+
+            input.style.width = min + 'px';
+            input.onkeypress = input.onkeydown = input.onkeyup = function () {
+                var input = this;
+                setTimeout(function () {
+                    var tmp = document.createElement('div');
+                    tmp.style.padding = '0';
+                    if (getComputedStyle)
+                        tmp.style.cssText = getComputedStyle(input, null).cssText;
+                    if (input.currentStyle)
+                        tmp.style = input.currentStyle;
+                    tmp.style.width = '';
+                    tmp.style.position = 'absolute';
+                    tmp.innerHTML = input.value.replace(/&/g, "&amp;")
+                        .replace(/</g, "&lt;")
+                        .replace(/>/g, "&gt;")
+                        .replace(/"/g, "&quot;")
+                        .replace(/'/g, "&#039;")
+                        .replace(/ /g, '&nbsp;');
+                    input.parentNode.appendChild(tmp);
+                    var width = tmp.clientWidth + pad_right + 1;
+                    tmp.parentNode.removeChild(tmp);
+                    if (min <= width && width <= max)
+                        input.style.width = width + 'px';
+                }, 1);
+            }
+
+        })();
+    </script>
+    <script type="text/javascript">
+        var date = new Date();
+        var currentDate = date.toISOString().slice(0, 10);
+
+        document.getElementById('datePicker').value = currentDate;
+
+        var now = new Date();
+        var month = (now.getMonth() + 1);
+        if (month < 10)
+            month = "0" + month;
+        var today = now.getFullYear() + '-' + month;
+        document.getElementById('monthPicker').value = today;
+    </script>
+
+    <!-- Import Trumbowyg -->
+    <script src="https://rawcdn.githack.com/Alex-D/Trumbowyg/v2.25.0/dist/trumbowyg.min.js"></script>
+    <script
+        src="https://rawcdn.githack.com/Alex-D/Trumbowyg/v2.25.0/dist/plugins/fontsize/trumbowyg.fontsize.min.js"></script>
+    <script
+        src="https://rawcdn.githack.com/Alex-D/Trumbowyg/v2.25.0/dist/plugins/colors/trumbowyg.colors.min.js"></script>
+    <script>
+        jQuery.trumbowyg.langs.fr = {
+            viewHTML: 'Voir le HTML',
+
+            fontsize: 'Taille de la police',
+            fontsizes: {
+                '15px': 'Normal',
+                '18px': 'Grand',
+                '21px': 'Très grand',
+            },
+
+            undo: 'Annuler',
+            redo: 'Refaire',
+
+            foreColor: 'Couleur du texte',
+            backColor: 'Couleur de fond',
+
+            formatting: 'Format',
+            p: 'Paragraphe',
+            blockquote: 'Citation',
+            code: 'Code',
+            header: 'Titre',
+
+            bold: 'Gras',
+            italic: 'Italique',
+            strikethrough: 'Barré',
+            underline: 'Souligné',
+
+            strong: 'Fort',
+            em: 'Emphase',
+            del: 'Supprimé',
+
+            superscript: 'Exposant',
+            subscript: 'Indice',
+
+            unorderedList: 'Liste à puces',
+            orderedList: 'Liste ordonnée',
+
+            insertImage: 'Insérer une image',
+            insertVideo: 'Insérer une video',
+            link: 'Lien',
+            createLink: 'Insérer un lien',
+            unlink: 'Supprimer le lien',
+
+            justifyLeft: 'Aligner à gauche',
+            justifyCenter: 'Centrer',
+            justifyRight: 'Aligner à droite',
+            justifyFull: 'Justifier',
+
+            horizontalRule: 'Insérer un séparateur horizontal',
+            removeformat: 'Supprimer formatage',
+
+            fullscreen: 'Plein écran',
+
+            close: 'Fermer',
+
+            submit: 'Valider',
+            reset: 'Annuler',
+
+            required: 'Obligatoire',
+            description: 'Description',
+            title: 'Titre',
+            text: 'Texte',
+            target: 'Cible'
+        };
+    </script>
+    <!-- Init Trumbowyg -->
+    <script>
+        $('#pangram').trumbowyg({
+            lang: 'fr',
+            btnsDef: {
+                align: {
+                    dropdown: ['justifyLeft', 'justifyCenter', 'justifyRight'],
+                    title: 'Alignement',
+                    ico: 'justifyFull'
+                }
+            },
+            btns: [
+                ['fontsize', 'bold', 'italic'],
+                ['foreColor', 'backColor'],
+                ['align'],
+                ['removeformat'],
+                ['fullscreen']
+            ],
+            plugins: {
+                fontsize: {
+                    sizeList: [
+                        '15px',
+                        '18px',
+                        '21px'
+                    ],
+                    allowCustomSize: false
+                },
+                colors: {
+                    colorList: [
+                        '000', '333', '666', '999', 'ccc', 'fff'
+                    ]
+                },
+            },
+            autogrow: true,
+            removeformatPasted: true,
+        });
+    </script>
+    <!-- Import GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script>
+        var tl = gsap.timeline();
+        //sequenced one-after-the-other
+        tl.to('#head-description p:nth-child(2)',{color: 'white', duration: 0}, 0.5)
+        tl.to('#eye g path:nth-child(1)',{transform: 'matrix(1, 0, 0, 0.9, 0, 0)', duration: 0.5}, 0.5)
+        tl.to('#eye g path:nth-child(2)',{transform: 'matrix(1, 0, 0, 1, -2.5, -3)', duration: 0.5}, 0.5)
+        tl.to('#eye g path:nth-child(3)',{transform: 'matrix(1, 0, 0, 1, -2.5, -3)', duration: 0.5}, 0.5)
+        tl.to('#head-description p:nth-child(2)',{color: 'black', duration: 0}, 1.5)
+        tl.to('#head-description p:nth-child(4)',{color: 'white', duration: 0}, 1.5)
+        tl.to('#eye g path:nth-child(2)',{transform: 'matrix(1, 0, 0, 1, -0.5, -3.5)', duration: 0.5}, 1.5)
+        tl.to('#eye g path:nth-child(3)',{transform: 'matrix(1, 0, 0, 1, -0.5, -3.5)', duration: 0.5}, 1.5)
+        tl.to('#head-description p:nth-child(4)',{color: 'black', duration: 0}, 2.5)
+        tl.to('#head-description p:nth-child(6)',{color: 'white', duration: 0}, 2.5)
+        tl.to('#eye g path:nth-child(2)',{transform: 'matrix(1, 0, 0, 1, 3, -3)', duration: 0.5}, 2.5)
+        tl.to('#eye g path:nth-child(3)',{transform: 'matrix(1, 0, 0, 1, 3, -3)', duration: 0.5}, 2.5)
+        tl.to('#head-description p:nth-child(6)',{color: 'black', duration: 0}, 3.5)
+        tl.to('#eye g path:nth-child(1)',{transform: 'matrix(1, 0, 0, 0.9, 0, 2)', duration: 0.5}, 3.5)
+        tl.to('#eye g path:nth-child(2)',{transform: 'matrix(1, 0, 0, 1, 0, 3)', duration: 0.5}, 3.5)
+        tl.to('#eye g path:nth-child(3)',{transform: 'matrix(1, 0, 0, 1, 0, 3)', duration: 0.5}, 3.5)
+        tl.to('form#pangramform',{height: 'auto', duration: 1}, 3.5)
+        tl.to('#eye g path:nth-child(1)',{transform: 'matrix(1, 0, 0, 1, 0, 0)', duration: 1}, 4.5)
+        tl.to('#eye g path:nth-child(2)',{transform: 'matrix(1, 0, 0, 1, 0, 0)', duration: 1}, 4.5)
+        tl.to('#eye g path:nth-child(3)',{transform: 'matrix(1, 0, 0, 1, 0, 0)', duration: 1}, 4.5)
+        tl.to('.trumbowyg-editor',{opacity: '1', duration: 1}, 4.5);
+    </script>
+
+</body>
+
+</html>
