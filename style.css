@@ -425,7 +425,10 @@ textarea#pangram {
 .trumbowyg-box {
     bottom: 5px!important;
     min-height: 150px!important;
-    border: none!important;
+    border-top: 5px dotted rgba(255, 165, 0, 1)!important;
+    border-right: none!important;
+    border-bottom: none!important;
+    border-left: none!important;
 }
 
 .trumbowyg-editor {
