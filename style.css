@@ -305,6 +305,7 @@ textarea#pangram {
     font-family: 'IM Fell DW Pica';
     font-weight: bold;
     text-align: center;
+    overflow: hidden;
     transition: height 1s;
 }
 
