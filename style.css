@@ -312,12 +312,14 @@ textarea#pangram {
 .alert span {
     position: absolute;
     width: 40px;
+    margin-top: 25px;
     font-size: 25px;
 }
 
 .alert svg {
     width: 40px;
     height: auto;
+    margin-top: 25px;
 }
 
 /* Letters
