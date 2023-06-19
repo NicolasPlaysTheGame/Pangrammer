@@ -580,11 +580,17 @@
             }).then(() => {
                 //Show Alert Message(5)
                 document.getElementById('mail').style.height = '80px';
+                setTimeout(function () {
+                    document.querySelector('#mail > svg').style.marginTop = '-30';
+                }, 1000);
                 //Hide Alert Message After Seven Seconds(6)
                 setTimeout(function () {
                     document.getElementById('mail').style.height = '0';
                 }, 5000);
                 document.getElementById('pangramform').reset();
+                setTimeout(function () {
+                    document.querySelector('#mail > svg').style.marginTop = '80';
+                }, 1000);
             }).catch((error) => {
                 alert(error)
             })
