@@ -575,9 +575,7 @@
                 setTimeout(function () {
                     document.querySelector('.alert').style.display = 'none';
                 }, 7000);
-                function myFunction() {
-                    document.getElementById('pangramform').reset();
-                }
+                document.getElementById('pangramform').reset();
             }).catch((error) => {
                 alert(error)
             })
