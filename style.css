@@ -1,18 +1,3 @@
-/* Regular */
-@font-face {
-    font-family: 'IM Fell DW Pica';
-    src: url('IMFellDWPica-Regular.ttf');
-    font-style: normal;
-    font-weight: normal;
-}
-/* Italic */
-@font-face {
-    font-family: 'IM Fell DW Pica';
-    src: url('IMFellDWPica-Italic.ttf');
-    font-style: italic;
-    font-weight: normal;
-}
-
 body {
     width: 420px;
     min-width: 420px;
