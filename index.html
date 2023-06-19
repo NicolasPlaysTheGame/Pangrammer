@@ -497,7 +497,7 @@
         });
     </script>
     <!-- Import GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script>
         var tl = gsap.timeline();
         //sequenced one-after-the-other
@@ -576,7 +576,9 @@
                 setTimeout(function () {
                     document.querySelector('.alert').style.display = 'none';
                 }, 7000);
-                document.getElementById('pangramform').reset();
+                function myFunction() {
+                    document.getElementById('pangramform').reset();
+                }
             }).catch((error) => {
                 alert(error)
             })
