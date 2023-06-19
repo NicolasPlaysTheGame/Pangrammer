@@ -557,17 +557,16 @@
             let date = document.querySelector('#datePicker').value;
             
             //send message values(3)
-            sendMessage(pangram, name, month, date);
+            sendMessage(pangram, name, date);
         }
         
         //Send Message to Firebase(4)
-        function sendMessage(pangram, name, month, date) {
+        function sendMessage(pangram, name, date) {
             const database = getDatabase();
             
             set(ref(database, 'users/' + Math.floor(Math.random() * 10000000)), {
                 pangram: pangram,
                 name: name,
-                month: month,
                 date: date
             }).then(() => {
                 //Show Alert Message(5)
@@ -577,7 +576,8 @@
                     document.querySelector('.alert').style.display = 'none';
                 }, 7000);
                 function myFunction() {
-                    document.getElementById('pangramform').reset();
+                    document.getElementById('pangram').reset();
+                    document.getElementById('name').reset();
                 }
             }).catch((error) => {
                 alert(error)
