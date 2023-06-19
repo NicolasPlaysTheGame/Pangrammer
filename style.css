@@ -313,7 +313,7 @@ textarea#pangram {
     width: 40px;
     height: auto;
     margin-top: 80px;
-    transition: margin-top 3s;
+    transition: margin-top 2s linear;
 }
 
 /* Letters
