@@ -314,12 +314,13 @@ textarea#pangram {
 ----------------------------------------------- */
 .alert {
     position: relative;
-    bottom: 2px;
-    padding: 20px 40px;
+    bottom: 2.5px;
+    height: 50px;
     background-color: rgba(255, 165, 0, 1);
     font-family: 'IM Fell DW Pica';
     font-weight: bold;
     text-align: center;
+    transition: height 1s;
 }
 
 /* Letters
@@ -437,9 +438,11 @@ textarea#pangram {
 }
 
 .trumbowyg-box {
-    bottom: 2.5px!important;
+    bottom: 5px!important;
     min-height: 150px!important;
-    border: none!important;
+    border-width: 5px 0 0 0!important;
+    border-style: dotted;
+    border-color: rgba(255, 165, 0, 1);
 }
 
 .trumbowyg-editor {
