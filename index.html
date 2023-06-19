@@ -224,9 +224,8 @@
 
         <form action="" method="POST" class="clearfix" id="pangramform">
 
-            <div class="alert">
-                <span>!</span>
-                <svg id="mail" viewBox="0 0 125 87" xmlns="http://www.w3.org/2000/svg">
+            <div id="mail">
+                <svg viewBox="0 0 125 87" xmlns="http://www.w3.org/2000/svg">
                     <path d="M 3.866 0 L 63.557 48.675 L 120.697 0 L 3.866 0 Z M 0 81.909 L 42.521 39.276 L 0 4.608 L 0 81.919 L 0 81.909 Z M 47.211 43.101 L 3.367 87.046 L 121.267 87.046 L 79.346 43.101 L 65.551 54.871 C 64.444 55.794 62.84 55.816 61.707 54.921 L 47.211 43.101 Z M 83.954 39.195 L 125 82.255 L 125 4.232 L 83.954 39.195 Z" style="fill: rgb(255, 255, 255);"></path>
                 </svg>
             </div>
@@ -580,11 +579,11 @@
                 date: date
             }).then(() => {
                 //Show Alert Message(5)
-                document.querySelector('.alert').style.height = '80px';
+                document.getElementById('mail').style.height = '80px';
                 //Hide Alert Message After Seven Seconds(6)
                 setTimeout(function () {
-                    document.querySelector('.alert').style.height = '0';
-                }, 7000);
+                    document.getElementById('mail').style.height = '0';
+                }, 5000);
                 document.getElementById('pangramform').reset();
             }).catch((error) => {
                 alert(error)
