@@ -312,7 +312,8 @@ textarea#pangram {
 #mail svg {
     width: 40px;
     height: auto;
-    margin-top: 25px;
+    margin-top: 80px;
+    transition: margin-top 3s;
 }
 
 /* Letters
