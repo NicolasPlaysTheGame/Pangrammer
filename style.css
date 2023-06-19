@@ -297,7 +297,7 @@ textarea#pangram {
 
 /* Alert
 ----------------------------------------------- */
-.alert {
+#mail {
     position: relative;
     bottom: 2.5px;
     height: 0px;
@@ -309,14 +309,7 @@ textarea#pangram {
     transition: height 1s;
 }
 
-.alert span {
-    position: absolute;
-    width: 40px;
-    margin-top: 25px;
-    font-size: 25px;
-}
-
-.alert svg {
+#mail svg {
     width: 40px;
     height: auto;
     margin-top: 25px;
