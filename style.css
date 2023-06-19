@@ -309,6 +309,17 @@ textarea#pangram {
     transition: height 1s;
 }
 
+.alert span {
+    position: absolute;
+    width: 40px;
+    font-size: 25px;
+}
+
+.alert svg {
+    width: 40px;
+    height: auto;
+}
+
 /* Letters
 ----------------------------------------------- */
 .hide {
