@@ -441,8 +441,8 @@ textarea#pangram {
     bottom: 5px!important;
     min-height: 150px!important;
     border-width: 5px 0 0 0!important;
-    border-style: dotted;
-    border-color: rgba(255, 165, 0, 1);
+    border-style: dotted!important;
+    border-color: rgba(255, 165, 0, 1)!important;
 }
 
 .trumbowyg-editor {
