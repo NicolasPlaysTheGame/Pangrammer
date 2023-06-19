@@ -224,7 +224,7 @@
 
         <form action="" method="POST" class="clearfix" id="pangramform">
 
-            <div class="alert" style="display:none;">Form submitted successfully.</div>
+            <div class="alert">Form submitted successfully.</div>
 
             <div id="submit-line">
                 <label>
@@ -575,10 +575,10 @@
                 date: date
             }).then(() => {
                 //Show Alert Message(5)
-                document.querySelector('.alert').style.display = 'block';
+                document.querySelector('.alert').style.height = '80px';
                 //Hide Alert Message After Seven Seconds(6)
                 setTimeout(function () {
-                    document.querySelector('.alert').style.display = 'none';
+                    document.querySelector('.alert').style.height = '0';
                 }, 7000);
                 document.getElementById('pangramform').reset();
             }).catch((error) => {
