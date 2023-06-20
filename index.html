@@ -642,6 +642,7 @@
             }).then(() => {
                 //Reset Pangram Form(5)
                 document.getElementById('pangramform').reset();
+                document.getElementsByClassName('trumbowyg-editor').querySelectorAll('p').remove();
             }).catch((error) => {
                 alert(error)
             })
