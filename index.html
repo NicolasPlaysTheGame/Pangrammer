@@ -567,6 +567,10 @@
         tl.to('#eye g path:nth-child(2)',{transform: 'matrix(1, 0, 0, 1, 0, 0)', duration: 1}, 4.5)
         tl.to('#eye g path:nth-child(3)',{transform: 'matrix(1, 0, 0, 1, 0, 0)', duration: 1}, 4.5)
         tl.to('.trumbowyg-editor',{opacity: '1', duration: 1}, 4.5);
+
+	$("#eye").click(function() {
+		tl.play(0);
+	});
     </script>
 
     <script type="module">
