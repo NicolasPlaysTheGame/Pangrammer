@@ -133,19 +133,19 @@
 
             $('.trumbowyg-editor').before('<div id="arrow-edit"><span>«</span></div>');
 
-            $('.trumbowyg-editor').focusin(function(){
+            $('.trumbowyg-editor').focusin(function () {
                 $('#arrow-edit').fadeTo(500, 1);
                 $('#letters').fadeTo(500, 1);
                 $('#lastLetters').fadeTo(500, 1);
-            });
-		
-	    $('.trumbowyg-editor').focusout(function(){
+            });	
+	    $('.trumbowyg-editor').focusout(function () {
                 $('#arrow-edit').fadeTo(500, 0);
                 $('#letters').fadeTo(500, 0);
                 $('#lastLetters').fadeTo(500, 0);
+		$('.trumbowyg-editor').find('p').remove();
             });
 
-            $('#arrow-edit span').click(function(){
+            $('#arrow-edit span').click(function () {
                 var hide = $('.trumbowyg-button-pane').css('display');
                 if (hide == 'none') {
                     $('.trumbowyg-button-pane').css('display', 'block');
