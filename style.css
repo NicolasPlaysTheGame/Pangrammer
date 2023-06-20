@@ -309,13 +309,17 @@ textarea#pangram {
     transition: height 1s;
 }
 
-#mail svg {
+#mail svg:nth-child(1), #mail svg:nth-child(2) {
+    display: none;
     position: relative;
     width: 40px;
     height: auto;
-    margin-top: 80px;
-    transition: margin-top 2s linear;
+    transition: top 2s linear;
 }
+
+#mail svg:nth-child(1) {top: -42.8px;}
+
+#mail svg:nth-child(2) {top: 80px;}
 
 /* Letters
 ----------------------------------------------- */
