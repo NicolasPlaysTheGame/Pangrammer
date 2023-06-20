@@ -544,8 +544,8 @@
     <!-- Import GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
     <script>
-        let toCompose = gsap.timeline();
-	let toSend = gsap.timeline();
+        var toCompose = gsap.timeline();
+	var toSend = gsap.timeline();
 	
         // Title sequence
         toCompose
@@ -573,7 +573,7 @@
 
 	// Title sequence
         toSend
-		.to('#mail',{height: '80px', duration: 1, : ease: "power1.inOut"}, 0)
+		.to('#mail',{height: '80px', duration: 1, ease: "power1.inOut"}, 0)
 		.to('#mail svg:nth-child(1)',{display: 'none', duration: 0}, 0)
 		.to('#mail svg:nth-child(1)',{top: '80px', duration: 2}, 0);
 
