@@ -317,7 +317,7 @@ textarea#pangram {
     transition: top 2s linear;
 }
 
-#mail svg:nth-child(1) {top: -42.8px;}
+#mail svg:nth-child(1) {top: -42.5px;}
 
 #mail svg:nth-child(2) {top: 80px;}
 
