@@ -306,7 +306,6 @@ textarea#pangram {
     font-weight: bold;
     text-align: center;
     overflow: hidden;
-    transition: height 1s;
 }
 
 #mail svg:nth-child(1), #mail svg:nth-child(2) {
@@ -314,7 +313,6 @@ textarea#pangram {
     position: relative;
     width: 40px;
     height: auto;
-    transition: top 2s linear;
 }
 
 #mail svg:nth-child(1) {top: -42.5px;}
