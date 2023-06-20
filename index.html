@@ -588,7 +588,12 @@
         	.to('#eye g path:nth-child(3)',{transform: 'matrix(1, 0, 0, 1, 0, 3)', duration: 0.5}, 0)
 		.to('#eye g path:nth-child(1)',{transform: 'matrix(1, 0, 0, 1, 0, 0)', duration: 0.5}, 7.4)
         	.to('#eye g path:nth-child(2)',{transform: 'matrix(1, 0, 0, 1, 0, 0)', duration: 0.5}, 7.4)
-        	.to('#eye g path:nth-child(3)',{transform: 'matrix(1, 0, 0, 1, 0, 0)', duration: 0.5}, 7.4);
+        	.to('#eye g path:nth-child(3)',{transform: 'matrix(1, 0, 0, 1, 0, 0)', duration: 0.5}, 7.4)
+		// Scissors
+	    	.to('#scissors1',{transform: 'matrix(0.996187, -0.087241, 0.087241, 0.996187, -2.445638, 4.040237)', duration: 0}, 0)
+        	.to('#scissors2',{transform: 'matrix(0.996187, 0.087241, -0.087241, 0.996187, 2.790174, -3.841925)', duration: 0}, 0)
+		.to('#scissors1',{transform: 'matrix(0.961238, -0.275719, 0.275719, 0.961238, -6.5272, 13.570148)', duration: 0}, 7.4)
+        	.to('#scissors2',{transform: 'matrix(0.961238, 0.275719, -0.275719, 0.961238, 10.029498, -11.340763)', duration: 0}, 7.4);
 
 	$("#scissors").click(function() {
 		toSend.play(0);
