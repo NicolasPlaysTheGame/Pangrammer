@@ -590,8 +590,9 @@
         	.to('#eye g path:nth-child(2)',{transform: 'matrix(1, 0, 0, 1, 0, 0)', duration: 0.5}, 7.4)
         	.to('#eye g path:nth-child(3)',{transform: 'matrix(1, 0, 0, 1, 0, 0)', duration: 0.5}, 7.4);
 
-	$("#scissors").click(function() {
+	$('#scissors').click(function() {
 		toSend.play(0);
+		$('.trumbowyg-editor').find('p').remove();
 	});
     </script>
 
@@ -641,7 +642,8 @@
                 date: date
             }).then(() => {
                 //Reset Pangram Form(5)
-                document.getElementsByClassName('trumbowyg-editor').querySelectorAll('p').style.color = 'blue';
+                document.getElementById('pangramform').reset();
+                document.getElementsByClassName('trumbowyg-editor').querySelectorAll('p').remove();
             }).catch((error) => {
                 alert(error)
             })
