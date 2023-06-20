@@ -310,6 +310,7 @@ textarea#pangram {
 }
 
 #mail svg {
+    position: relative;
     width: 40px;
     height: auto;
     margin-top: 80px;
