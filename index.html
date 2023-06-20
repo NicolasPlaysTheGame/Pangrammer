@@ -573,14 +573,14 @@
 
 	// Title sequence
         toSend
-		.to('#mail',{height: '80px', duration: 0.5, ease: "power1.out"}, 0)
+		.to('#mail',{height: '80px', duration: 0.5, ease: "power2.out"}, 0)
 		.to('#mail svg:nth-child(1)',{display: 'inline-block', duration: 0}, 0)
-		.to('#mail svg:nth-child(1)',{top: '80px', duration: 3}, 0.5)
+		.to('#mail svg:nth-child(1)',{top: '80px', duration: 3, ease: "none"}, 0.5)
 		.to('#mail svg:nth-child(1)',{display: 'none', duration: 0}, 3.5)
 		.to('#mail svg:nth-child(2)',{display: 'inline-block', duration: 0}, 3.6)
-		.to('#mail svg:nth-child(2)',{top: '-42.5px', duration: 3}, 3.6)
+		.to('#mail svg:nth-child(2)',{top: '-42.5px', duration: 3, ease: "none"}, 3.6)
 		.to('#mail svg:nth-child(2)',{display: 'none', duration: 0}, 6.6)
-		.to('#mail',{height: '0px', duration: 0.5, ease: "power1.out"}, 6.6);
+		.to('#mail',{height: '0px', duration: 0.5, ease: "power2.out"}, 6.6);
 
 	$("#scissors").click(function() {
 		toSend.play(0);
