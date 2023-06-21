@@ -139,10 +139,9 @@
                 $('#lastLetters').fadeTo(500, 1);
             });
 
-	    if ($('#arrow-edit').css('opacity', '1')) {
-		$('.trumbowyg-editor').focusout();
-		$('#lastLetters').css('color', 'red');
-	    }
+	    $('.trumbowyg-editor').blur(function() {
+		    $('#lastLetters').css('color', 'red');
+	    });
 
             $('#arrow-edit span').click(function () {
                 var hide = $('.trumbowyg-button-pane').css('display');
