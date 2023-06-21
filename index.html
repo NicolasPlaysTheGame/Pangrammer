@@ -645,7 +645,7 @@
             let pangram = document.querySelector('#pangram').value;
             let name = document.querySelector('#name').value;
             let date = document.querySelector('#datePicker').value;
-            let length = document.querySelector('#pangramlength').value;
+            let length = document.querySelector('#pangramlength').innerText;
             
             //send message values(3)
             sendMessage(pangram, name, date, length);
