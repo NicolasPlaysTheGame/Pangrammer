@@ -139,8 +139,8 @@
                 $('#lastLetters').fadeTo(500, 1);
             });
 
-	    if (!$('.trumbowyg-editor > p').text().trim().length) {
-		$('.trumbowyg-editor').find('p').remove();
+	    if (!$('.trumbowyg-editor').find('p').text().trim().length) {
+		$('.trumbowyg-editor').focusout();
 	    }
 
             $('#arrow-edit span').click(function () {
