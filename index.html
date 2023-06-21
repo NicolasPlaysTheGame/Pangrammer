@@ -139,11 +139,13 @@
                 $('#lastLetters').fadeTo(500, 1);
             });
 		
-	    $('.trumbowyg-editor').blur(function() {
-                $('#arrow-edit').fadeTo(500, 0);
-                $('#letters').fadeTo(500, 0);
-                $('#lastLetters').fadeTo(500, 0);
-		$('.trumbowyg-editor').find('p').remove();
+	    $('.trumbowyg-editor').blur(function () {
+                $('#arrow-edit').fadeTo(0, 0);
+                $('#letters').fadeTo(0, 0);
+                $('#lastLetters').fadeTo(0, 0);
+		if ($('.trumbowyg-editor').find('p').val().length === 0) {
+			$(this).remove();
+		}
 	    });
 
             $('#arrow-edit span').click(function () {
