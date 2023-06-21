@@ -140,12 +140,11 @@
             });
 		
 	    $('.trumbowyg-editor').blur(function () {
-                $('#arrow-edit').fadeTo(0, 0);
-                $('#letters').fadeTo(0, 0);
-                $('#lastLetters').fadeTo(0, 0);
 		if (!$('.trumbowyg-editor').find('p').text().length) {
-			$('#title-overlay').css('color', 'red');
 			$('.trumbowyg-editor').find('p').remove();
+                	$('#arrow-edit').fadeTo(0, 0);
+                	$('#letters').fadeTo(0, 0);
+                	$('#lastLetters').fadeTo(0, 0);
 		}
 	    });
 
