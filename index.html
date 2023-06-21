@@ -139,7 +139,7 @@
                 $('#lastLetters').fadeTo(500, 1);
             });
 
-	    if (!$('.trumbowyg-editor').find('*').text().trim().length) {
+	    if (!$('#arrow-edit').css('opacity', '1')) {
 		$('.trumbowyg-editor').focusout();
 		$('#lastLetters').css('color', 'red');
 	    }
