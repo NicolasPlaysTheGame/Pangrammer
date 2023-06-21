@@ -137,10 +137,14 @@
                 $('#arrow-edit').fadeTo(500, 1);
                 $('#letters').fadeTo(500, 1);
                 $('#lastLetters').fadeTo(500, 1);
+		$('#lastLetters').css('color', 'black');
             });
 
 	    $('.trumbowyg-editor').blur(function() {
-		    $('#lastLetters').css('color', 'red');
+		$('#arrow-edit').fadeTo(500, 0);
+                $('#letters').fadeTo(500, 0);
+                $('#lastLetters').fadeTo(500, 0);
+		$('#lastLetters').css('color', 'red');
 	    });
 
             $('#arrow-edit span').click(function () {
