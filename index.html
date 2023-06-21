@@ -141,6 +141,7 @@
 
 	    if (!$('.trumbowyg-editor').find('p').text().trim().length) {
 		$('.trumbowyg-editor').focusout();
+		$('#lastLetters').style.color = "red";
 	    }
 
             $('#arrow-edit span').click(function () {
