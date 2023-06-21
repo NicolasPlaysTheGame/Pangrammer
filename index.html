@@ -132,6 +132,16 @@
             update_pangram();
 
             $('.trumbowyg-editor').before('<div id="arrow-edit"><span>«</span></div>');
+		
+	    $('.trumbowyg-editor').focus(function () {
+                $('#arrow-edit').fadeTo(500, 1);
+                $('#letters').fadeTo(500, 1);
+                $('#lastLetters').fadeTo(500, 1);
+            });
+		
+	    $('.trumbowyg-editor').blur(function() {
+		$('.trumbowyg-editor').find('p').remove();
+	    });
 
             $('#arrow-edit span').click(function () {
                 var hide = $('.trumbowyg-button-pane').css('display');
