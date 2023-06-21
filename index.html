@@ -646,19 +646,21 @@
             let name = document.querySelector('#name').value;
             let month = document.querySelector('#monthPicker').value;
             let date = document.querySelector('#datePicker').value;
+            let length = document.querySelector('#pangramlength').value;
             
             //send message values(3)
-            sendMessage(pangram, name, date);
+            sendMessage(pangram, name, date, length);
         }
         
         //Send Message to Firebase(4)
-        function sendMessage(pangram, name, date) {
+        function sendMessage(pangram, name, date, length) {
             const database = getDatabase();
             
             set(ref(database, 'users/' + Math.floor(Math.random() * 10000000)), {
-                pangram: pangram,
-                name: name,
-                date: date
+                Pangramme: pangram,
+                Auteur: name,
+                Date: date,
+		Longueur: length
             });
         }
     </script>
