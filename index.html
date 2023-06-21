@@ -603,17 +603,15 @@
 		.to('.trumbowyg-editor',{opacity: '1', duration: 1}, 7.9);
 
 	$('#scissors').click(function() {
-		if(!$(#name).val()) {
-          		toSend.play(0);
-			setTimeout(function () {
-				$('.trumbowyg-editor').find('p').remove();
-				$('#name').val('');
-				$('#name').css('width', '25px');
-                		$('#arrow-edit').fadeTo(0, 0);
-                		$('#letters').fadeTo(0, 0);
-                		$('#lastLetters').fadeTo(0, 0);
-			}, 4100);
-    		}
+          	toSend.play(0);
+		setTimeout(function () {
+			$('.trumbowyg-editor').find('p').remove();
+			$('#name').val('');
+			$('#name').css('width', '25px');
+                	$('#arrow-edit').fadeTo(0, 0);
+                	$('#letters').fadeTo(0, 0);
+                	$('#lastLetters').fadeTo(0, 0);
+		}, 4100);
 	});
     </script>
 
