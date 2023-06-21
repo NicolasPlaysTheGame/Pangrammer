@@ -143,9 +143,8 @@
                 $('#arrow-edit').fadeTo(0, 0);
                 $('#letters').fadeTo(0, 0);
                 $('#lastLetters').fadeTo(0, 0);
-		if ($('.trumbowyg-editor > p').val().length === 0) {
+		if (!$('.trumbowyg-editor').find('p').text().length) {
 			$('#title-overlay').css('color', 'red');
-			$(this).remove();
 		}
 	    });
 
