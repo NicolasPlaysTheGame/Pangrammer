@@ -137,7 +137,11 @@
                 $('#arrow-edit').fadeTo(500, 1);
                 $('#letters').fadeTo(500, 1);
                 $('#lastLetters').fadeTo(500, 1);
-            });	
+            });
+
+	    if (!$('.trumbowyg-editor').find('p').text().trim().length) {
+		$('.trumbowyg-editor').find('p').remove();
+	    }
 
             $('#arrow-edit span').click(function () {
                 var hide = $('.trumbowyg-button-pane').css('display');
