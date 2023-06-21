@@ -140,6 +140,9 @@
             });
 		
 	    $('.trumbowyg-editor').blur(function() {
+                $('#arrow-edit').fadeTo(500, 0);
+                $('#letters').fadeTo(500, 0);
+                $('#lastLetters').fadeTo(500, 0);
 		$('.trumbowyg-editor').find('p').remove();
 	    });
 
