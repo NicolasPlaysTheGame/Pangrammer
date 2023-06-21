@@ -657,10 +657,10 @@
             const database = getDatabase();
             
             set(ref(database, 'users/' + Math.floor(Math.random() * 10000000)), {
-                Pangramme: pangram,
-                Auteur: name,
-                Date: date,
-		Longueur: length
+                pangram: Pangramme,
+                name: Auteur,
+                date: Date,
+		length: Longueur
             });
         }
     </script>
