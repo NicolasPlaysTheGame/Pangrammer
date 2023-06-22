@@ -376,9 +376,9 @@ textarea#pangram {
 #msg {
     display: none;
     overflow: hidden;
-    max-height: 0px;
+    height: 0px;
     font-style: italic;
-    transition: max-height 5s ease;
+    transition: height 1s ease;
 }
 
 #msg>div {
