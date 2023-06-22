@@ -667,7 +667,7 @@
 	    });
 	}
 
-	var pangrams = firebase.database().ref('pangrams/' + postId);
+	var pangrams = firebase.database().ref('pangrams');
 	pangrams.on('child_added', function(snapshot){
 	    const data = snapshot.val();
    	    console.log(data);
