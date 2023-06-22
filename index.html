@@ -111,7 +111,7 @@
                     setTimeout(function () {
                         var totalHeight = 0;
 			$("#msg").children().each(function () {
-				totalHeight += $(this).outerHeight();
+				totalHeight = totalHeight + $(this).outerHeight(true);
 			});
                     }, 10);
                 } else {
