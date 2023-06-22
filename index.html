@@ -666,6 +666,11 @@
 		length: length
 	    });
 	}
+
+	pangrams.on('value', (snapshot) => {
+	    const data = snapshot.val(); 
+   	    console.log(data);
+  	});
     </script>
 
 </body>
