@@ -671,9 +671,10 @@
 
 	//Read Message from Firebase(5)
 	const database = getDatabase();
-	const starCountRef = ref(database, 'users/' + postId + '/starCount');
+	const starCountRef = ref(database, 'users/' + Math.floor(Math.random() * 10000000);
 	onValue(starCountRef, (snapshot) => {
   		const data = snapshot.val();
+		console.log(data);
   		updateStarCount(postElement, data);
 	});
     </script>
