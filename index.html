@@ -109,7 +109,10 @@
                     });
                     $('#msg').show();
                     setTimeout(function () {
-                        $('#msg').css({'height': $('#msg_1').outerHeight()});
+                        var totalHeight = 0;
+			$("#msg").children().each(function () {
+				totalHeight += $(this).outerHeight();
+			});
                     }, 10);
                 } else {
                     $('#eye g:nth-child(2)').css('visibility', 'hidden');
