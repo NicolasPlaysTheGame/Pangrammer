@@ -637,7 +637,7 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         
-        import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+        import { getDatabase, ref, set, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
         
         //listen for submit event//(1)
         document
@@ -668,6 +668,14 @@
 		length: length
             });
         }
+
+	//Read Message from Firebase(5)
+	const database = getDatabase();
+	const starCountRef = ref(database, 'users/' + postId + '/starCount');
+	onValue(starCountRef, (snapshot) => {
+  		const data = snapshot.val();
+  		updateStarCount(postElement, data);
+	});
     </script>
 
 </body>
