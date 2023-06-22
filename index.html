@@ -639,9 +639,9 @@
         import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
         
         //Send Message to Firebase(4)
-        function sendMessage() {
+        function sendMessage(pangram, name, date, length) {
             const database = getDatabase();
-            set(ref(database, 'users/' + userId), {
+            set(ref(database, 'users/' + Math.floor(Math.random() * 10000000)), {
                 pangram: document.querySelector('#pangram').value,
                 name: document.querySelector('#name').value,
                 date: document.querySelector('#datePicker').value,
