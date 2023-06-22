@@ -639,14 +639,10 @@
         
         import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
         
-        //listen for submit event//(1)
-        document
-            .getElementById('pangramform')
-            .addEventListener('submit', formSubmit);
-        
         //Send Message to Firebase(4)
         function sendMessage(pangram, name, date, length) {
             const database = getDatabase();
+		
             set(ref(database, 'users/' + userId), {
                 pangram: document.querySelector('#pangram').value,
                 name: document.querySelector('#name').value,
