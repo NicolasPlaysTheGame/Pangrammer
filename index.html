@@ -637,13 +637,13 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         
-        import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+        import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
         
         //Send Message to Firebase(4)
         function sendMessage(pangram, name, date, length) {
             const database = getDatabase();
 		
-            set(ref(database, 'users/' + userId), {
+            push(ref(database, 'users/' + userId), {
                 pangram: document.querySelector('#pangram').value,
                 name: document.querySelector('#name').value,
                 date: document.querySelector('#datePicker').value,
