@@ -157,11 +157,6 @@
                 if (hide == 'none') {
                     $('.trumbowyg-button-pane').css('display', 'block');
                     $('#arrow-edit span').html('»');
-		} else if (hide == 'none' && !$('.trumbowyg-editor').find('p').text().trim().length) {
-			$('.trumbowyg-button-pane').css('display', 'block');
-                    	$('#arrow-edit span').html('»');
-			$('#letters').fadeTo(0, 1);
-                	$('#lastLetters').fadeTo(0, 1);
                 } else {
                     $('.trumbowyg-button-pane').css('display', 'none');
                     $('#arrow-edit span').html('«');
