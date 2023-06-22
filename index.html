@@ -113,6 +113,7 @@
 			$("#msg").children().each(function () {
 				totalHeight = totalHeight + $(this).outerHeight(true);
 			});
+			$("#msg").height(totalHeight);
                     }, 10);
                 } else {
                     $('#eye g:nth-child(2)').css('visibility', 'hidden');
