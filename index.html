@@ -621,42 +621,39 @@
 	});
     </script>
 
-    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
-    <script>
-	var firebaseConfig = {
-		apiKey: "AIzaSyAb39MGDDUaMP-pprqsC4F-W9stxUVvq0E",
-		authDomain: "pangrammer-ece3e.firebaseapp.com",
-		databaseURL: "https://pangrammer-ece3e-default-rtdb.europe-west1.firebasedatabase.app/",
-		projectId: "pangrammer-ece3e",
-		storageBucket: "pangrammer-ece3e.appspot.com",
-		messagingSenderId: "960020739322",
-		appId: "1:960020739322:web:a69b46ee4248e37c8f4543"
-	};
-
-	// Initialize Firebase
-	firebase.initializeApp(firebaseConfig);
-
-	// Reference to the pangrams object in Firebase database
-	var pangrams= firebase.database().ref('pangrams');
-
-	// Save a new recommendation to the database, using the input in the form
-	var sendMessage = function () {
-
-  		// Get input values from each of the form elements
-  		var pangram = $("#pangram").val();
-  		var name = $("#name").val();
-  		var date = $("#date").val();
-  		var length = $("#length").val();
-
-  		// Push a new pangram to the database using those values
-  		pangrams.push({
-    			"pangram": pangram,
-    			"name": name,
-    			"date": date,
-    			"length": length
-  		});
-	};
+        <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+        
+        const firebaseConfig = {
+            apiKey: "AIzaSyAb39MGDDUaMP-pprqsC4F-W9stxUVvq0E",
+            authDomain: "pangrammer-ece3e.firebaseapp.com",
+            databaseURL: "https://pangrammer-ece3e-default-rtdb.europe-west1.firebasedatabase.app/",
+            projectId: "pangrammer-ece3e",
+            storageBucket: "pangrammer-ece3e.appspot.com",
+            messagingSenderId: "960020739322",
+            appId: "1:960020739322:web:a69b46ee4248e37c8f4543"
+        };
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        
+        import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+        
+        //listen for submit event//(1)
+        document
+            .getElementById('pangramform')
+            .addEventListener('submit', formSubmit);
+        
+        //Send Message to Firebase(4)
+        function sendMessage(pangram, name, date, length) {
+            const database = getDatabase();
+            set(ref(database, 'users/' + userId), {
+                pangram: document.querySelector('#pangram').value,
+                name: document.querySelector('#name').value,
+                date: document.querySelector('#datePicker').value,
+		length: document.querySelector('#pangramlength').innerText
+            });
+        }
     </script>
 
 </body>
