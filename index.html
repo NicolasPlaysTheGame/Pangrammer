@@ -658,11 +658,13 @@
 
 	// Save a new recommendation to the database, using the input in the form
 	var sendMessage = function (pangram, name, date, length) {
-	    pangrams.set({
-		pangram: pangram,
+	    var newPangram = pangrams.push();
+	    newPangram.set({
 		name: name,
-		date: date,
-		length: length
+		company: company,
+		email: email,
+		phone: phone,
+		message: message
 	    });
 	}
 
