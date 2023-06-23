@@ -638,7 +638,7 @@
 	firebase.initializeApp(firebaseConfig);
 
 	// Reference to the pangrams object in Firebase database
-	var pangrams = firebase.database().ref('pangrams' + postId);
+	var pangrams = firebase.database().ref('pangrams');
 
 	// Listen for submit event
         document.getElementById('pangramform').addEventListener('submit', formSubmit);
@@ -657,7 +657,7 @@
         }
 
 	// Save a new recommendation to the database, using the input in the form
-	var sendMessage = function (postId, pangram, name, date, length) {
+	var sendMessage = function (pangram, name, date, length) {
 	    var newPangram = pangrams.push();
 		newPangram.set({
 		pangram: pangram,
