@@ -667,7 +667,7 @@
 	}
 
 	var pangrams = firebase.database().ref('pangrams');
-	pangrams.on('value', (snapshot) => {{
+	pangrams.on('value', (snapshot) => {
 	    const data = snapshot.val();
    	    console.log(data);
   	});
