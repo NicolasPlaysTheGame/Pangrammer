@@ -660,11 +660,10 @@
 	var sendMessage = function (pangram, name, date, length) {
 	    var newPangram = pangrams.push();
 	    newPangram.set({
+		pangram: pangram,
 		name: name,
-		company: company,
-		email: email,
-		phone: phone,
-		message: message
+		date: date,
+		length: length
 	    });
 	}
 
