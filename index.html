@@ -667,11 +667,14 @@
 	    });
 	}
 
-	var pangrams = firebase.database().ref('pangrams');
-	pangrams.on('value', (snapshot) => {
-	    const data = snapshot.val();
-   	    console.log(data);
-  	});
+	pangrams.once('value', (snapshot) => {
+  	    snapshot.forEach((childSnapshot) => {
+		var childKey = childSnapshot.key;
+		var childData = childSnapshot.val();
+		// ...
+		$("#msg").append(childData);
+	    });
+	});
     </script>
 
 </body>
