@@ -638,7 +638,7 @@
 	firebase.initializeApp(firebaseConfig);
 
 	// Reference to the pangrams object in Firebase database
-	var pangrams = firebase.database().ref('pangrams');
+	var pangrams = firebase.database().ref('pangrams/' + 'name');
 
 	// Listen for submit event
         document.getElementById('pangramform').addEventListener('submit', formSubmit);
