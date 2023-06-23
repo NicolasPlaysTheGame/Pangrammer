@@ -667,7 +667,7 @@
 	}
 
 	var pangrams = firebase.database().ref('pangrams');
-	pangrams.on('child_added', function(snapshot){
+	pangrams.on('value', (snapshot) => {{
 	    const data = snapshot.val();
    	    console.log(data);
   	});
