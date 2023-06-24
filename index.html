@@ -19,11 +19,6 @@
 
 	    console.log('Hello world !');
 
-	    var pangrams = firebase.database().ref('pangrams');
-	    pangrams.on('child_added', function(snapshot) {
-   		console.log(snapshot.val());
-	    });
-
             function update_pangram() {
 
                 var text = $('.trumbowyg-editor').text();
@@ -673,6 +668,10 @@
 		length: length
 	    });
 	}
+
+	pangrams.on('child_added', function(snapshot) {
+   	    console.log(snapshot.val());
+	});
     </script>
 
 </body>
