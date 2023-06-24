@@ -393,18 +393,18 @@ textarea#pangram {
     padding: 20px 40px;
 }
 
+.author-message {
+    text-align: right;
+}
+
 .author-message span {
     font-size: 15px;
     font-style: initial;
     font-weight: bold;
 }
 
-.author-message {
-    text-align: right;
-}
-
 .message {
-    padding-bottom: 3px;
+    padding-bottom: 10px;
 }
 
 /* Trumbowyg
