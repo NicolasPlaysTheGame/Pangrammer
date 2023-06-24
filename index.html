@@ -627,7 +627,7 @@
             // Get Values from the DOM
             var pangram = document.querySelector('#pangram').value;
             var name = document.querySelector('#name').value;
-            var date = document.querySelector('#datePicker').value;
+            var date = new Date(document.querySelector('#datePicker').value).toLocaleDateString("fr");
             var length = document.querySelector('#pangramlength').innerText;
             
             // Send message values
