@@ -673,7 +673,7 @@
 	    snapshot.forEach(function(data){
                 var val = data.val();
 		console.log(val);
-                content += '<div>' + val.pangram + '<p class="author-message">' par '<span>' + val.name + '</span><span>' + val.date + '</span></p><p>' + val.length + '</p></div>';
+                content += '<div>' + val.pangram + '<p class="author-message">par<span>' + val.name + '</span>, le<span>' + val.date + '</span></p><p>' + val.length + '</p></div>';
 	    });
             $('#msg').append(content);
 	});
