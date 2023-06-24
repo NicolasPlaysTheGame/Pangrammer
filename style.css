@@ -53,6 +53,7 @@ header {
     left: 4px;
     font-size: 18px;
     font-style: italic;
+    user-select: none;
 }
 
 #head-description span {
