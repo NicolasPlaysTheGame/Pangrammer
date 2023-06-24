@@ -667,16 +667,12 @@
 	    });
 	}
 
-	var pangrams = firebase.database().ref('pangrams');
-	pangrams.once('value', function(snapshot){
-	    var content = '';
-	    snapshot.forEach(function(data){
-                var val = data.val();
-		console.log(val);
-                content += '<div>' + val.pangram + '</div>';
-                content += '<div>' + val.name + '</div>';
-	    });
-            $('#msg').append(content);
+	pangrams.on('child_added', function(data) {
+   	    var content = data.val();
+	    console.log("pangram: " + content.pangram);
+	    console.log("name: " + content.name);
+   	    console.log("date: " + content.date);
+   	    console.log("length: " + content.length);
 	});
     </script>
 
