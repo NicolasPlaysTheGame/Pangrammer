@@ -692,6 +692,16 @@
   	    console.log("Below is the data from child_changed");
   	    console.log(snapshot.val());
 	});
+
+	database.ref('/pushData').once('value', function(snapshot){
+  	    console.log(Object.keys(snapshot.val()));
+	})
+
+	database.ref('/pushData').once('value', function(snapshot){
+  	    snapshot.forEach(function(data){
+    		console.log(data.key);
+  	    });
+	})
     </script>
 
 </body>
