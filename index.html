@@ -81,7 +81,7 @@
             }
 
             $('#eye').click(function () {
-                var hide = $('#msg').css('display');
+                var hide = $('#pangramList').css('display');
                 if (hide == 'none') {
                     $('#eye g:nth-child(1)').css('visibility', 'hidden');
                     $('#eye g:nth-child(2)').css('visibility', 'visible');
@@ -89,13 +89,13 @@
                         $('#eye g:nth-child(1)').css('visibility', 'hidden');
                         $('#eye g:nth-child(2)').css('visibility', 'visible');
                     });
-                    $('#msg').show();
+                    $('#pangramList').show();
                     setTimeout(function () {
                         var totalHeight = 0;
-			$("#msg").children().each(function () {
+			$('#pangramList').children().each(function () {
 				totalHeight += $(this).outerHeight(true);
 			});
-			$("#msg").height(totalHeight);
+			$('#pangramList').height(totalHeight);
                     }, 10);
                 } else {
                     $('#eye g:nth-child(2)').css('visibility', 'hidden');
@@ -107,9 +107,9 @@
                         $('#eye g:nth-child(2)').css('visibility', 'hidden');
                         $('#eye g:nth-child(1)').css('visibility', 'visible');
                     });
-                    $('#msg').css('height', '0');
+                    $('#pangramList').css('height', '0');
                     setTimeout(function () {
-                        $('#msg').hide();
+                        $('#pangramList').hide();
                     }, 1000);
                 }
             });
@@ -188,7 +188,7 @@
                         </g>
                     </svg>
 
-                    <div id="msg"></div>
+                    <div id="pangramList"></div>
 			
                 </div>
 
@@ -609,9 +609,9 @@
 	    snapshot.forEach(function(data){
                 var val = data.val();
 		console.log(val);
-                content += '<div>' + val.pangram + '<div><p class="author-message">Pangramme de <span>' + val.length + '</span> lettres</p><p class="author-message">composé par <span>' + val.name + '</span>,</p><p class="author-message">le <span>' + val.date + '</span></p></div></div>';
+                content += '<div class="pangrams">' + val.pangram + '<div><p>Pangramme de <span>' + val.length + '</span> lettres</p><p>composé par <span>' + val.name + '</span>,</p><p>le <span>' + val.date + '</span></p></div></div>';
 	    });
-            $('#msg').append(content);
+            $('#pangramList').append(content);
 	});
     </script>
 
