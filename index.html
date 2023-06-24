@@ -66,9 +66,7 @@
                     $('#scissors').addClass("enabled");
                     $('#scissors').attr('title', 'Publier');
                     $('#svg_2').attr("fill", "white");
-                    $('#written_by').text("composé");
-                    $('#text_of').text("Pangramme");
-                    $('.name-date').css('display', 'inline-block');
+                    $('#pangramSign').css('display', 'inline-block');
                 }
                 else {
                     $('#letters').removeClass("hide");
@@ -78,25 +76,9 @@
                     $('#scissors').addClass("disabled");
                     $('#scissors').attr('title', '');
                     $('#svg_2').attr("fill", "rgba(16, 16, 16, 0.3)");
-                    $('#written_by').text("écrit");
-                    $('#text_of').text("Texte");
-                    $('.name-date').css('display', 'none');
+                    $('#pangramSign').css('display', 'none');
                 }
             }
-
-            $('#reset').click(function () {
-                $('#pangramlength').text("0");
-                $('#letters').removeClass("hide");
-                $('#submit').attr("disabled", true);
-                $('#letters div').each(function () {
-                    $(this).removeClass("success");
-                });
-                $('#scissors').removeClass("enabled");
-                $('#scissors').addClass("disabled");
-                $('#scissors').attr('title', '');
-                $('#written_by').text("écrit");
-                $('#text_of').text("Texte");
-            });
 
             $('#eye').click(function () {
                 var hide = $('#msg').css('display');
@@ -280,9 +262,9 @@
 
             <textarea oninput="auto_grow(this)" placeholder="Composez ici vos propres pangrammes en une phrase cohérente et la plus courte possible, sans lettres solitaires, ni abréviation ou sigle." id="pangram" name="pangram"></textarea>
 
-            <div class="name-date">
-                <p><span id="text_of"></span> de <span id="pangramlength">0</span> lettres</p>
-                <p><label for="name"><span id="written_by"></span> par </label><input type="text" id="name" name="name" placeholder="____" size="20" autocomplete="off" required>,</p>
+            <div id="pangramSign">
+                <p>Pangramme de <span id="pangramlength">0</span> lettres</p>
+                <p><label for="name">composé par </label><input type="text" id="name" name="name" placeholder="____" size="20" autocomplete="off" required>,</p>
                 <p><label for="date">le </label><input type="date" id="datePicker" name="date" disabled></p>
             </div>
 
