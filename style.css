@@ -246,12 +246,6 @@ textarea#pangram {
     display: contents;
 }
 
-#datePicker::-webkit-datetime-edit-month-field,
-#datePicker::-webkit-datetime-edit-year-field,
-#datePicker::-webkit-datetime-edit-text {
-    display: none;
-}
-
 /* Scissors
 ----------------------------------------------- */
 #pangramform #submit-line {
