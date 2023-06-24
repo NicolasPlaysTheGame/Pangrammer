@@ -672,6 +672,14 @@
 	pangrams.on('child_added', function(snapshot) {
    	    console.log(snapshot.val());
 	});
+
+
+	var database = firebase.database();
+
+	var rootRef = database.ref('/');
+	rootRef.once('value', function(snapshot){
+	    console.log(snapshot.val());
+	});
     </script>
 
 </body>
