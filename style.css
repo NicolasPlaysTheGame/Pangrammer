@@ -361,15 +361,12 @@ textarea#pangram {
     padding: 20px 40px;
 }
 
-.pangrams p:first-child {
-    padding-bottom: 10px;
-}
-
 .pangrams div {
+    padding-top: 10px;
     text-align: right;
 }
 
-.pangrams>span {
+.pangrams div span {
     font-size: 15px;
     font-style: initial;
     font-weight: bold;
