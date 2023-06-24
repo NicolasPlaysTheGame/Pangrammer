@@ -148,7 +148,7 @@ form#pangramform {
     display: table;
 }
 
-#pangramform .name-date {
+#pangramform #pangramSign {
     display: none;
     float: right;
     padding: 0 40px;
