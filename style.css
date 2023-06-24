@@ -20,6 +20,7 @@ header {
 }
 
 #head {
+    display: block;
     position: relative;
     margin: 50px auto 0;
     width: 297.88px;
@@ -46,6 +47,7 @@ header {
 #title-overlay {
     top: -2px;
     left: 2px;
+    color: rgba(0, 0, 0, 1);
 }
 
 #head-description {
