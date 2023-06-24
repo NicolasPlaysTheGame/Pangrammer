@@ -345,7 +345,9 @@
             element.style.height = (element.scrollHeight) + "px";
         }
 
-	var min = 25, max = 300, pad_right = 4, input = document.getElementById('name');
+        (function () {
+
+            var min = 25, max = 300, pad_right = 4, input = document.getElementById('name');
 
             input.style.width = min + 'px';
             input.onkeypress = input.onkeydown = input.onkeyup = function () {
