@@ -176,16 +176,6 @@ form#pangramform {
     line-height: 15px;
 }
 
-#pangramform .name-date p:nth-child(2) {
-    position: relative;
-    left: 4px;
-}
-
-.name-date p:nth-child(2) span:nth-child(3) {
-    position: relative;
-    right: 4px;
-}
-
 input#name::-webkit-input-placeholder {
     color: rgba(16, 16, 16, 0.3);
 }
