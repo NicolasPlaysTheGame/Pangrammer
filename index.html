@@ -673,7 +673,7 @@
 	    snapshot.forEach(function(data){
                 var val = data.val();
 		console.log(val);
-                content += '<div>' + val.pangram + val.name + val.date + val.length + '</div>';
+                content += '<div>' + val.pangram + '<p>' + val.name + val.date + '</p>' + val.length + '</div>';
 	    });
             $('#msg').append(content);
 	});
