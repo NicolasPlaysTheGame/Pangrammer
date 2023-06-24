@@ -198,6 +198,7 @@ input#name::-webkit-input-placeholder {
     padding: 9px 1px;
     font-family: inherit;
     font-size: 15px;
+    font-style: initial;
     font-weight: bold;
 }
 
