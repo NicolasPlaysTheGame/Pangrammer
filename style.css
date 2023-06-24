@@ -403,7 +403,7 @@ textarea#pangram {
     font-weight: bold;
 }
 
-.message {
+#msg>div p:first-child {
     padding-bottom: 10px;
 }
 
