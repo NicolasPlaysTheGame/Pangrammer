@@ -361,7 +361,7 @@ textarea#pangram {
     padding: 20px 40px;
 }
 
-.pangrams p {
+.pangrams p:first-child {
     padding-bottom: 10px;
 }
 
@@ -369,7 +369,7 @@ textarea#pangram {
     text-align: right;
 }
 
-..pangrams>span {
+.pangrams>span {
     font-size: 15px;
     font-style: initial;
     font-weight: bold;
