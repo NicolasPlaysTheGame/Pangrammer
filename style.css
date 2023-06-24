@@ -25,6 +25,7 @@ header {
     margin: 50px auto 0;
     width: 297.88px;
     height: 40px;
+    user-select: none;
 }
 
 #title,
