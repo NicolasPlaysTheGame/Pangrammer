@@ -680,6 +680,18 @@
 	rootRef.once('value', function(snapshot){
 	    console.log(snapshot.val());
 	});
+
+	pushDataRef = database.ref("/pushData");
+	pushDataRef.on("child_added", function(snapshot){
+  	    console.log("Below is the data from child_added");
+  	    console.log(snapshot.val());
+	});
+
+	setDataRef = database.ref("/setData");
+	setDataRef.on('child_changed', function(snapshot) {
+  	    console.log("Below is the data from child_changed");
+  	    console.log(snapshot.val());
+	});
     </script>
 
 </body>
