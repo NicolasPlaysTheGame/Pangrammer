@@ -19,12 +19,9 @@
 
 	    console.log('Hello world !');
 
-	    pangrams.on('child_added', function(data) {
-   		var content = data.val();
-		console.log("pangram: " + content.pangram);
-		console.log("name: " + content.name);
-   		console.log("date: " + content.date);
-   		console.log("length: " + content.length);
+	    var pangrams = firebase.database().ref('pangrams');
+	    pangrams.on('child_added', function(snapshot) {
+   		console.log(snapshot.val());
 	    });
 
             function update_pangram() {
