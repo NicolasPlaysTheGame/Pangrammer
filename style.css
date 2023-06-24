@@ -346,7 +346,7 @@ textarea#pangram {
     visibility: visible;
 }
 
-#msg {
+#pangramList {
     display: none;
     overflow: hidden;
     height: 0px;
@@ -354,25 +354,25 @@ textarea#pangram {
     transition: height 1s ease;
 }
 
-#msg>div {
+.pangrams {
     border-width: 5px 0 0 0;
     border-style: dotted;
     border-color: rgba(255, 165, 0, 1);
     padding: 20px 40px;
 }
 
-.author-message {
+.pangrams p {
+    padding-bottom: 10px;
+}
+
+.pangrams div {
     text-align: right;
 }
 
-.author-message span {
+..pangrams>span {
     font-size: 15px;
     font-style: initial;
     font-weight: bold;
-}
-
-#msg>div p:first-child {
-    padding-bottom: 10px;
 }
 
 /* Trumbowyg
